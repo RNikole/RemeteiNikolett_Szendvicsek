@@ -112,6 +112,11 @@
             ?>
 
             <?php if ($hiba == ""): ?>
+                <?php
+                $file = fopen("adatok.csv", "a");
+                $sor = implode(";", $_POST) . PHP_EOL;
+                fwrite($file, $sor);
+                ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 Sikeres felvétel.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
