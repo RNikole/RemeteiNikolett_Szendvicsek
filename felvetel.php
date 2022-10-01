@@ -79,6 +79,53 @@
     <main class="container">
         <h1 class="my-4">Szendvicsek felvétele</h1>
 
+        <?php
+        if (isset($_POST) && !empty($_POST)) {
+            $hiba = "";
+
+            if (!isset($_POST['szendvics']) || empty($_POST['szendvics'])) {
+                $hiba .= "Szendvics megnevezése kötelező! ";
+            }
+
+            if (!isset($_POST['suly']) || empty($_POST['suly'])) {
+                $hiba .= "Súly megadása kötelező! ";
+            } else if (!is_numeric($_POST['suly']) || round($_POST['suly']) != $_POST['suly']){
+                $hiba .= "Súly csak egész szám lehet! ";
+            } else if ($_POST['suly'] <= 0 || $_POST['suly'] > 200) {
+                $hiba .= "A súly értéke 1 és 200 közé kell, hogy essen! ";
+            }
+
+            if (!isset($_POST['alap']) || empty($_POST['alap'])) {
+                $hiba .= "Alap megadása kötelező! ";
+            } else if ($_POST['alap'] != "vaj" && $_POST['alap'] != "vajkrém" && $_POST['alap'] != "sajtkrém") {
+                $hiba .= "Alap típust a legördülő menüből válassza ki! ";
+            }
+            
+            if (!isset($_POST['feltet1']) &&
+                !isset($_POST['feltet2']) &&
+                !isset($_POST['feltet3']) &&
+                !isset($_POST['feltet4']) &&
+                !isset($_POST['feltet5'])) 
+            {
+                $hiba .= "Legalább egy feltét kiválasztása kötelező! ";
+            } 
+            ?>
+
+            <?php if ($hiba == ""): ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                Sikeres felvétel.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php else: ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo $hiba ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
+        <?php
+        }
+        ?>
+
         <form action="felvetel.php" method="post" name="szendvics_felvetel" onsubmit="return validalas();">
             <div class="mb-3">
                 <label for="szendvics_input">Szendvics megnevezés</label>
