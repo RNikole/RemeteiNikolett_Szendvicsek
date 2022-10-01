@@ -8,6 +8,51 @@
     <title>Szendvicsek</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script>
+        function validalas() {
+            const szendvics = document.forms['szendvics_felvetel']['szendvics'].value;
+            const suly = document.forms['szendvics_felvetel']['suly'].value;
+            const alap = document.forms['szendvics_felvetel']['alap'].value;
+            
+            if (szendvics.trim().length == 0) {
+                alert("Szendvics megnevezése kötelező");
+                return false;
+            }
+
+            if (suly.trim().length == 0) {
+                alert("Súly megadása kötelező");
+                return false;
+            }
+
+            if (suly != parseInt(suly)) {
+                alert("A súly csak szám lehet");
+                return false;
+            }
+
+            if (suly <= 0 || suly > 200) {
+                alert(`A súly értéke 1 és 200 közé kell, hogy essen`);
+                return false;
+            }
+
+            if (alap.trim().length == 0) {
+                alert("Alap megadása kötelező");
+                return false;
+            }
+
+            if (document.getElementById('feltet1').checked || 
+                document.getElementById('feltet2').checked ||
+                document.getElementById('feltet3').checked ||
+                document.getElementById('feltet4').checked ||
+                document.getElementById('feltet5').checked)
+                {  log.console("OK"); } 
+            else { 
+                alert("Nincs feltét kiválasztva! Legalább 1 feltét kiválasztása kötelező"); 
+                return false;
+            }
+
+            return false;
+        }
+    </script>
 </head>
 
 <body>
