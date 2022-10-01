@@ -46,7 +46,34 @@
                 </tr>
             </thead>
             <tbody>
-   
+                <?php
+                    $file = fopen("adatok.csv", "r");
+                    $i = 0;
+                    
+                    while ($sor = fgets($file)) :
+                        $i++;
+                        $adatok = explode(';', trim($sor));
+                ?>
+                <tr>
+                    <td><?php echo $i ?></td>
+                    <td><?php echo $adatok[0] ?></td>
+                    <td><?php echo $adatok[1] ?></td>
+                    <td><?php echo $adatok[2] ?></td>
+                    <td><?php echo $adatok[3] ?></td>
+                    <td>
+                        <?php 
+                            $j = 4;
+                            while ($j < count($adatok)) {
+                                if ($j != 4) {
+                                    echo ", ";
+                                }
+                                echo $adatok[$j];
+                                $j++;  
+                            }
+                        ?>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
             </tbody>
             <tfoot>
                 <tr>
