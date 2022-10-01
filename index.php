@@ -33,6 +33,32 @@
 
     <main class="container">
         <h1 class="my-4">Szendvicsek listázása</h1>
+
+        <table class="table table-striped m-4">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Szendvics megnevezés</th>
+                    <th>Súlya</th>
+                    <th>Alap</th>
+                    <th>Kenyér típusa</th>
+                    <th>Feltétek</th>
+                </tr>
+            </thead>
+            <tbody>
+   
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>Szendvics megnevezés</th>
+                    <th>Súlya</th>
+                    <th>Alap</th>
+                    <th>Kenyér típusa</th>
+                    <th>Feltétek</th>
+                </tr>
+            </tfoot>
+        </table>
     </main>
 
 </body>
